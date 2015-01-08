@@ -1,4 +1,4 @@
-#Slice Exports Options
+#Slice Export Options
 
 ##概要
 
@@ -6,7 +6,7 @@
 
 *  等倍のサイズでのデザインデータは`Control` + `Command` + `s`
 *  Retinaサイズでのデザインデータは`Control` + `Command` + `r`
-*  Retinaサイズでのデザインデータをxxxdpi等のAndroid用サイズでも書き出したい時には`Control` + `Command` + `a`
+*  Retinaサイズでのデザインデータをxxxdpiのサイズでも書き出したい時には`Control` + `Command` + `a`
 
 ##インストール
 
