@@ -1,0 +1,51 @@
+// Shortcut to this plugin (control cmd r)
+
+var export_data = [
+  {
+    "format": "png",
+    "scale": 0.5,
+    "suffix": ""
+  },
+  {
+    "format": "png",
+    "scale": 1,
+    "suffix": "@2x"
+  },
+  {
+    "format": "png",
+    "scale": 1.5,
+    "suffix": "@3x"
+  }
+]
+
+if([selection count] == 0){
+  log("nothing is selected")
+} else {
+  for (var i = 0; i < [selection count]; i++) {
+    var layer = [selection objectAtIndex:i]
+    addExportOptions(layer)
+  }
+}
+
+function addExportOptions(layer){
+  var export_options = [layer exportOptions],
+    export_sizes = [export_options sizes]
+
+  // Clear exportable sizes
+  while([export_sizes count] > 0) {
+    [[export_sizes firstObject] remove]
+  }
+
+  // Add export options
+  for (var s = 0; s < export_data.length; s++) {
+    var size_data = export_data[s]
+    var size = [[layer exportOptions] addExportSize]
+    [size setFormat:size_data.format]
+    [size setScale:size_data.scale]
+    [size setName:size_data.suffix]
+  }
+
+  //Refresh inspector hack
+  [[doc currentPage] deselectAllLayers]
+  [layer select:true byExpandingSelection:true]
+}
